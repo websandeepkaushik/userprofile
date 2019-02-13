@@ -10,7 +10,7 @@ import './App.css';
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     !localStorage.getItem('idToken')
-      ? <Redirect to='/login' />
+      ? props.history.location.pathname != '/register' ? <Redirect to='/login' /> : ''
       : ''
   )} />
 );
